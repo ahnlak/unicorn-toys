@@ -6,8 +6,9 @@
 # Copyright (C) 2022 Pete Favelle <ahnlak@gmail.com>
 # Released under the MIT License; see LICENSE for details
 
-import machine, random, time
 from math import trunc
+from random import randint
+from time import sleep
 from galactic import GalacticUnicorn
 from picographics import PicoGraphics, DISPLAY_GALACTIC_UNICORN
 
@@ -66,9 +67,9 @@ while True:
   raindrops = [drop for drop in raindrops if drop.is_alive()]
 
   # Do we have enough raindrops?
-  if len(raindrops) < random.randint(4, 10):
+  if len(raindrops) < randint(4, 10):
     newdrop=Raindrop(1,2)
-    raindrops.append(Raindrop(random.randint(0,GalacticUnicorn.WIDTH),random.randint(0,GalacticUnicorn.HEIGHT)))
+    raindrops.append(Raindrop(randint(0,GalacticUnicorn.WIDTH),randint(0,GalacticUnicorn.HEIGHT)))
 
   # So, ask each of those raindrops to render themselves, and update
   for drop in raindrops:
@@ -79,4 +80,4 @@ while True:
   galactic.update(graphics)
 
   # Nice. So, breathe...
-  time.sleep(0.15)
+  sleep(0.15)
